@@ -20,10 +20,16 @@ def add_item(items: List[str]):
 @app.post("/query_items/")
 def query_items(items: List[str]):
     cheaters_list = []
+    fair_players_list = []
     for item in items:
         if item in cheaters:
             cheaters_list.append(item)
+        elif item in fair_players:
+            fair_players_list.append(item)
     return {
-        "body": cheaters_list,
+        "body": {
+            "cheaters_list": cheaters_list,
+            "fair_players_list": fair_players_list
+        },
         "statusCode": 200
     }
