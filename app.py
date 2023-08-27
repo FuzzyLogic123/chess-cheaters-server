@@ -8,12 +8,10 @@ cheaters = set()
 def add_item(items: List[str]):
     for item in items:
         cheaters.add(item)
-    print(cheaters)
     return {"statusCode": 200}
 
 @app.post("/query_items/")
 def query_items(items: List[str]):
-    print(cheaters)
     cheaters_list = []
     for item in items:
         if item in cheaters:
