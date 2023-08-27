@@ -1,17 +1,24 @@
 from fastapi import FastAPI
-from typing import Optional
+from typing import List, Dict
 
 app = FastAPI()
-item_set = set()
+cheaters = set()
 
-@app.post("/add_item/")
-def add_item(item: str):
-    item_set.add(item)
-    return {"message": "Item added successfully", "statusCode": 200}
+@app.post("/add_items/")
+def add_item(items: List[str]):
+    for item in items:
+        cheaters.add(item)
+    print(cheaters)
+    return {"statusCode": 200}
 
-@app.get("/query_item/{item}")
-def query_item(item: str):
-    if item in item_set:
-        return {"message": "Item exists", "statusCode": 200}
-    else:
-        return {"message": "Item does not exist", "statusCode": 502}
+@app.post("/query_items/")
+def query_items(items: List[str]):
+    print(cheaters)
+    cheaters_list = []
+    for item in items:
+        if item in cheaters:
+            cheaters_list.append(item)
+    return {
+        "body": cheaters_list,
+        "statusCode": 200
+    }
