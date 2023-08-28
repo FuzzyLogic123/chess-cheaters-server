@@ -4,8 +4,9 @@ import requests
 
 # for i, server_url in enumerate(["https://54.176.0.0:5000/query_items/", "http://54.176.0.0:5000/add_items/"][::-1]):
 i = 1
-server_url = "http://54.176.0.0:5000/query_items/"
-# server_url = "http://54.176.0.0:5000/add_items/"
+# server_url = "http://54.176.0.0:5000/query_items/"
+# server_url = "http://54.176.0.0:5000/add_cheaters/"
+server_url = "http://localhost:5000/query_items/"
 if i == 1:
     # List of usernames to query
     usernames = [ "muncher", "dragondeeznuts", "testnutsack"]
