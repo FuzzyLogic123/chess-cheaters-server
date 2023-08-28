@@ -72,5 +72,6 @@ def query_items(items: List[str]):
 def clear_cache():
     cheaters.clear()
     fair_players.clear()
-    requests = 0
+    requests["cheaters_count"] = 0
+    requests["fair_players_count"] = 0
     return {"statusCode": 200}
