@@ -6,7 +6,7 @@ import requests
 i = 1
 # server_url = "http://54.176.0.0:5000/query_items/"
 # server_url = "http://54.176.0.0:5000/add_cheaters/"
-server_url = "http://localhost:5000/query_items/"
+server_url = "http://localhost:5000/add_cheaters/"
 if i == 1:
     # List of usernames to query
     usernames = [ "muncher", "dragondeeznuts", "testnutsack"]

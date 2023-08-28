@@ -26,16 +26,17 @@ async def lifespan(app: FastAPI):
 
 app = FastAPI(lifespan=lifespan)
 requests = {
-    "count" :0
+    "cheaters_count": 0,
+    "fair_players_count" :0
 }
 
 @app.post("/add_cheaters/")
 def add_item(items: List[str]):
     for item in items:
         cheaters.add(item)
-    requests["count"] += 1
-    if requests["count"] % 10000 == 0:
-        requests["count"] += 1
+    requests["cheaters_count"] += 1
+    if requests["cheaters_count"] % 10000 == 0:
+        requests["cheaters_count"] += 1
         save_elements("cheaters.txt", cheaters)
     return {"statusCode": 200}
 
@@ -43,9 +44,9 @@ def add_item(items: List[str]):
 def add_item(items: List[str]):
     for item in items:
         fair_players.add(item)
-    requests["count"] += 1
-    if requests["count"] % 10000 == 0:
-        requests["count"] += 1
+    requests["fair_players_count"] += 1
+    if requests["fair_players_count"] % 10000 == 0:
+        requests["fair_players_count"] += 1
         save_elements("fair_players.txt", fair_players)
     return {"statusCode": 200}
 
